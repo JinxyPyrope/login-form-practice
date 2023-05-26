@@ -14,6 +14,10 @@ function Login() {
           <label>Username </label>
           <input type="text" name="uname" required />
         </div>
+        <div className="input-container">
+          <label>Password </label>
+          <input type="text" name="pass" required />
+        </div>
       </form>
     </div>
   )
