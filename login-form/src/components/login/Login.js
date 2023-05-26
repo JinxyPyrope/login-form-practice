@@ -7,7 +7,16 @@ function Login() {
   //Creates JSX code for conditional error message
   const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
 
-  return <div>Hello World</div>
+  return (
+    <div className="login-container">
+      <form>
+        <div className="input-container">
+          <label>Username </label>
+          <input type="text" name="uname" required />
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default Login
