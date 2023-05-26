@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 function Login() {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  return (
-    <div>Login</div>
-  )
+  //Creates JSX code for conditional error message
+  const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
+
+  return <div>Hello World</div>
 }
 
 export default Login
