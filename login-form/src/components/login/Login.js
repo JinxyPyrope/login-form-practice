@@ -7,16 +7,23 @@ function Login() {
   //Creates JSX code for conditional error message
   const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
 
+  const handleSubmit = event => {
+    // Prvenet page reload
+    event.preventDefault()
+  }
+
   return (
     <div className="login-container">
       <form>
         <div className="input-container">
           <label>Username </label>
           <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
           <input type="text" name="pass" required />
+          {renderErrorMessage("pass")}
         </div>
       </form>
     </div>
