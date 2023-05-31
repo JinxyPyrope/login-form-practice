@@ -12,9 +12,11 @@ function Login() {
     event.preventDefault()
   }
 
+  const database = [{username: "user1", passworrd: "pass1"}]
+
   return (
     <div className="login-container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
           <input type="text" name="uname" required />
@@ -24,6 +26,9 @@ function Login() {
           <label>Password </label>
           <input type="text" name="pass" required />
           {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+          <input type="submit" />
         </div>
       </form>
     </div>
