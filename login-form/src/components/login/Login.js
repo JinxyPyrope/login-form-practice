@@ -12,7 +12,17 @@ function Login() {
     event.preventDefault()
   }
 
-  const database = [{username: "user1", passworrd: "pass1"}]
+  //User Login Test Info
+  const database = [
+    { username: "user1", passworrd: "pass1" },
+    { username: "user2", passworrd: "pass2" }
+  ]
+
+  //Error Messages
+  const errors = {
+    uname: 'invalid username',
+    pass: "invalid password"
+  }
 
   return (
     <div className="login-container">
