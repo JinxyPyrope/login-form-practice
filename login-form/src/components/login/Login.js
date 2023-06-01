@@ -6,8 +6,14 @@ function Login() {
 
   //User Login Test Info
   const database = [
-    { username: "user1", password: "pass1" },
-    { username: "user2", password: "pass2" }
+    {
+      username: "user1",
+      password: "pass1"
+    },
+    {
+      username: "user2",
+      password: "pass2"
+    }
   ]
 
   //Error Messages
@@ -15,9 +21,6 @@ function Login() {
     uname: "invalid username",
     pass: "invalid password"
   }
-
-  //Creates JSX code for conditional error message
-  const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
 
   const handleSubmit = event => {
     // Prvenet page reload
@@ -31,15 +34,19 @@ function Login() {
     //Check for match
     if (userData) {
       if (userData.password !== pass.value) {
+        // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass })
       } else {
         setIsSubmitted(true)
       }
     } else {
-      //No Username found
+      // Username not found
       setErrorMessages({ name: "uname", message: errors.uname })
     }
   }
+
+  //Creates JSX code for conditional error message
+  const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
 
   const renderForm = (
     <div className="form">
@@ -51,7 +58,7 @@ function Login() {
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="text" name="pass" required />
+          <input type="password" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
@@ -62,7 +69,7 @@ function Login() {
   )
 
   return (
-    <div className="login-container">
+    <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
