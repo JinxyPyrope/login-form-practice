@@ -6,8 +6,8 @@ function Login() {
 
   //User Login Test Info
   const database = [
-    { username: "user1", passworrd: "pass1" },
-    { username: "user2", passworrd: "pass2" }
+    { username: "user1", password: "pass1" },
+    { username: "user2", password: "pass2" }
   ]
 
   //Error Messages
