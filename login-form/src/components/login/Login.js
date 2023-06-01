@@ -4,14 +4,6 @@ function Login() {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  //Creates JSX code for conditional error message
-  const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
-
-  const handleSubmit = event => {
-    // Prvenet page reload
-    event.preventDefault()
-  }
-
   //User Login Test Info
   const database = [
     { username: "user1", passworrd: "pass1" },
@@ -20,8 +12,28 @@ function Login() {
 
   //Error Messages
   const errors = {
-    uname: 'invalid username',
+    uname: "invalid username",
     pass: "invalid password"
+  }
+
+  //Creates JSX code for conditional error message
+  const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
+
+  const handleSubmit = event => {
+    // Prvenet page reload
+    event.preventDefault()
+
+    let { uname, pass } = document.forms[0]
+
+    const userData = database.find(user => user.username === uname.value)
+
+    if (userData) {
+      if (userData.password !== pass.value) {
+        setErrorMessages({ name: "pass", message: errors.pass })
+      } else {
+        setIsSubmitted(true)
+      }
+    }
   }
 
   return (
