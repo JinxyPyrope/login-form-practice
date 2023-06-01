@@ -25,19 +25,24 @@ function Login() {
 
     let { uname, pass } = document.forms[0]
 
+    //Search for user data
     const userData = database.find(user => user.username === uname.value)
 
+    //Check for match
     if (userData) {
       if (userData.password !== pass.value) {
         setErrorMessages({ name: "pass", message: errors.pass })
       } else {
         setIsSubmitted(true)
       }
+    } else {
+      //No Username found
+      setErrorMessages({ name: "uname", message: errors.uname })
     }
   }
 
-  return (
-    <div className="login-container">
+  const renderForm = (
+    <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username </label>
@@ -53,6 +58,15 @@ function Login() {
           <input type="submit" />
         </div>
       </form>
+    </div>
+  )
+
+  return (
+    <div className="login-container">
+      <div className="login-form">
+        <div className="title">Sign In</div>
+        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+      </div>
     </div>
   )
 }
