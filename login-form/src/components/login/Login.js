@@ -4,7 +4,7 @@ function Login() {
   const [errorMessages, setErrorMessages] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  //User Login Test Info
+  // User Login info
   const database = [
     {
       username: "user1",
@@ -16,22 +16,21 @@ function Login() {
     }
   ]
 
-  //Error Messages
   const errors = {
     uname: "invalid username",
     pass: "invalid password"
   }
 
   const handleSubmit = event => {
-    // Prvenet page reload
+    //Prevent page reload
     event.preventDefault()
 
-    let { uname, pass } = document.forms[0]
+    const { uname, pass } = document.forms[0]
 
-    //Search for user data
+    // Find user login info
     const userData = database.find(user => user.username === uname.value)
 
-    //Check for match
+    // Compare user info
     if (userData) {
       if (userData.password !== pass.value) {
         // Invalid password
@@ -45,9 +44,10 @@ function Login() {
     }
   }
 
-  //Creates JSX code for conditional error message
+  // Generate JSX code for error message
   const renderErrorMessage = name => name === errorMessages.name && <div className="error">{errorMessages.message}</div>
 
+  // JSX code for login form
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -77,5 +77,4 @@ function Login() {
     </div>
   )
 }
-
 export default Login
